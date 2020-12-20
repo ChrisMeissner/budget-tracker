@@ -46,5 +46,6 @@
   "theme_color": "#ffffff",
   "background_color": "#ffffff",
   "start_url": "/" ,
-  "display": "standalone"
+  "display": "standalone",
+  "description": "Budget Tracker allows you to track your budget even if you experience an interrupted connection."
 }

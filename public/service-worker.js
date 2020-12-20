@@ -2,6 +2,7 @@ const CACHE_NAME = 'budget-tracker-cache-v2';
 const DATA_CACHE_NAME = 'data-cache-v2';
 
 const FILES_TO_CACHE = [
+  '/',
   '/index.html',
   '/manifest.json',
   '/js/index/js',
@@ -26,7 +27,6 @@ self.addEventListener('install', function(evt) {
       return cache.addAll(FILES_TO_CACHE);
     })
   );
-
   self.skipWaiting();
 });
 
@@ -44,7 +44,6 @@ self.addEventListener('activate', function(evt) {
       );
     })
   );
-
   self.clients.claim();
 });
 
@@ -72,10 +71,9 @@ self.addEventListener('fetch', function(evt) {
         })
         .catch(err => console.log(err))
     );
-
     return;
-  } else {
-    evt.respondWith(
+  } 
+  evt.respondWith(
       fetch(evt.request).catch(function() {
         return caches.match(evt.request).then(function(response) {
           if (response) {
@@ -87,6 +85,4 @@ self.addEventListener('fetch', function(evt) {
         });
       })
     );
-  }
-  return;
 });
